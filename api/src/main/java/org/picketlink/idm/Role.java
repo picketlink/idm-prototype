@@ -21,6 +21,9 @@
  */
 package org.picketlink.idm;
 
+import java.util.Collection;
+import java.util.Map;
+
 /**
  * Role representation
  *
@@ -28,4 +31,78 @@ package org.picketlink.idm;
  */
 public interface Role
 {
+   //TODO: Javadocs
+   //TODO: Exceptions
+   //TODO: User related methods
+   //TODO: Group related methods
+
+   // Self
+   
+   String getName();
+
+
+   // Users
+
+   Collection<User> getUsers(Group group);
+   
+   Collection<User> getUsers(String group);
+   
+   //TODO: if we make it simply "getUsers()" then it is confusing if it should return users in context of 
+   //TODO: application roles or simply any user that is related to this role both in context of application or any group.
+   Collection<User> getUsersWithApplicationRole();
+
+
+
+   // Groups
+
+   Collection<Group> getGroups(User user);
+   
+   Collection<Group> getGroups(String user);
+
+
+
+   // Attributes
+
+   /**
+    * Set attribute with given name and value. Operation will overwrite any previous value.
+    * Null value will remove attribute.
+    *
+    * @param name of attribute
+    * @param value to be set
+    */
+   void setAttribute(String name, String value);
+
+   /**
+    * Set attribute with given name and values. Operation will overwrite any previous values.
+    * Null value or empty array will remove attribute.
+    *
+    * @param name of attribute
+    * @param values to be set
+    */
+   void setAttribute(String name, String[] values);
+
+   /**
+    * Remove attribute with given name
+    *
+    * @param name of attribute
+    */
+   void removeAttribute(String name);
+
+   /**
+    * @param name of attribute
+    * @return attribute values or null if attribute with given name doesn't exist. If given attribute has many values
+    * method will return first one
+    */
+   String getAttribute(String name);
+
+   /**
+    * @param name of attribute
+    * @return attribute values or null if attribute with given name doesn't exist
+    */
+   String[] getAttributeValues(String name);
+
+   /**
+    * @return map of attribute names and their values
+    */
+   Map<String, String[]> getAttributes();
 }

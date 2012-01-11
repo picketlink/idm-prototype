@@ -22,37 +22,23 @@
 package org.picketlink.idm;
 
 /**
- * Template
+ * Membership links User, Group and Role
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface UserQuery extends Query
+public interface Membership
 {
+   //TODO: could be a way to have easy explicit object with getUser, getRole, getGroup instead of methods like
+   //TODO: Map<Role, Set<User>> getMemberships().
+   //TODO: Therefore mostly helper object for convenient searches and not exposing any more fancy operations
+   //TODO: To be decided
+
    //TODO: Javadocs
    //TODO: Exceptions
+
+   User getUser();
    
-   UserQuery reset();
-   
-   UserQuery getImmutable();
-   
-   UserQuery setName(String name);
-   
-   String getName();
-   
-   UserQuery setRelatedGroup(Group group);
-   
-   UserQuery setRelatedGroup(String group);
-   
-   Group getRelatedGroup();
-   
-   UserQuery setRole(Role role);
-   
-   UserQuery setRole(String name);
+   Group getGroup();
    
    Role getRole();
-   
-   UserQuery setAttributeFilter(String name, String[] values);
-   
-   UserQuery sort(boolean ascending);
-
 }

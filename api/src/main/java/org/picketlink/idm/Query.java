@@ -28,4 +28,11 @@ package org.picketlink.idm;
  */
 public interface Query
 {
+   //TODO: Javadocs
+   //TODO: Exceptions
+
+   void setRange(Range range);
+   
+   Range getRange();
+
 }

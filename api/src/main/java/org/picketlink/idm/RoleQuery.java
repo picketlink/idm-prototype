@@ -26,6 +26,33 @@ package org.picketlink.idm;
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface RoleQuery
+public interface RoleQuery extends Query
 {
+   //TODO: Javadocs
+   //TODO: Exceptions
+
+   RoleQuery reset();
+   
+   RoleQuery getImmutable();
+   
+   RoleQuery setName(String name);
+
+   String getName();
+   
+   RoleQuery setUser(User user);
+   
+   RoleQuery setUser(String user);
+   
+   User getUser();
+   
+   RoleQuery setGroup(Group group);
+   
+   RoleQuery setGroup(String group);
+   
+   Group getGroup();
+
+   RoleQuery setAttributeFilter(String name, String[] values);
+   
+   RoleQuery sort(boolean ascending);
+
 }

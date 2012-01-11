@@ -21,6 +21,9 @@
  */
 package org.picketlink.idm;
 
+import java.util.Collection;
+import java.util.List;
+
 /**
  * IdentityManager
  *
@@ -28,12 +31,85 @@ package org.picketlink.idm;
  */
 public interface IdentityManager
 {
+   //TODO: Javadocs
+   //TODO: Exceptions
    
-   User createUser(String id);
+   
+   // User
+   
+   User createUser(String name);
+   
+   void removeUser(User user);
+   
+   void removeUser(String name);
+   
+   User getUser(String name);
+   
+   Collection<User> getUsers();
+   
+   
+   
+   // Group 
    
    Group createGroup(String id);
    
    Group createGroup(String id, Group parent);
    
+   Group createGroup(String id, String parent);
+   
+   void removeGroup(Group group);
+   
+   void removeGroup(String group);
+   
+   Group getGroup(String group);
+   
+   Group getGroup(String group, Group parent);
+   
+   Collection<Group> getGroups();
+   
+   
+   
+   // Roles
+   
+   Role createRole(String name);
+   
+   void removeRole(Role role);
+   
+   void removeRole(String name);
+   
+   Role getRole(String name);
+   
+   Collection<Role> getRoles();
+   
+   Collection<Role> getRoles(User user, Group group);
+   
+   Collection<Role> getRoles(String user, String group);
+  
 
+   // Queries
+
+   UserQuery createUserQuery();
+   
+   GroupQuery createGroupQuery();
+   
+   RoleQuery createRoleQuery();
+   
+   MembershipQuery createMembershipQuery();
+   
+   List<User> executeQuery(UserQuery query);
+   
+   List<User> executeQuery(UserQuery query, Range range);
+   
+   List<Group> executeQuery(GroupQuery query);
+   
+   List<Group> executeQuery(GroupQuery query, Range range);
+   
+   List<Role> executeQuery(RoleQuery query);
+   
+   List<Role> executeQuery(RoleQuery query, Range range);
+   
+   List<Membership> executeQuery(MembershipQuery query);
+   
+   List<Membership> executeQuery(MembershipQuery query, Range range);
+   
 }

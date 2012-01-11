@@ -26,33 +26,31 @@ package org.picketlink.idm;
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface UserQuery extends Query
+public interface MembershipQuery extends Query
 {
    //TODO: Javadocs
    //TODO: Exceptions
+
+   MembershipQuery reset();
    
-   UserQuery reset();
+   MembershipQuery immutable();
    
-   UserQuery getImmutable();
+   MembershipQuery setUser(User user);
    
-   UserQuery setName(String name);
+   MembershipQuery setUser(String user);
+
+   User getUser();
    
-   String getName();
+   MembershipQuery setGroup(Group group);
    
-   UserQuery setRelatedGroup(Group group);
+   MembershipQuery setGroup(String group);
    
-   UserQuery setRelatedGroup(String group);
+   Group getGroup();
    
-   Group getRelatedGroup();
+   MembershipQuery setRole(Role role);
    
-   UserQuery setRole(Role role);
-   
-   UserQuery setRole(String name);
+   MembershipQuery setRole(String role);
    
    Role getRole();
-   
-   UserQuery setAttributeFilter(String name, String[] values);
-   
-   UserQuery sort(boolean ascending);
 
 }

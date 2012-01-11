@@ -21,38 +21,38 @@
  */
 package org.picketlink.idm;
 
+import com.sun.xml.internal.bind.v2.TODO;
+
 /**
- * Template
+ * Represent range in paginated query
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface UserQuery extends Query
+public class Range
 {
-   //TODO: Javadocs
-   //TODO: Exceptions
+   //TODO: Just a quick impl
    
-   UserQuery reset();
+   private int offset;
    
-   UserQuery getImmutable();
+   private int limit = -1;
+
+   private Range() {}
+
+   private Range(int offset, int limit)
+   {
+      this.offset = offset;
+      this.limit = limit;
+   }
    
-   UserQuery setName(String name);
+   public Range of(int offset, int limit)
+   {
+      return new Range(offset, limit);
+   }
    
-   String getName();
-   
-   UserQuery setRelatedGroup(Group group);
-   
-   UserQuery setRelatedGroup(String group);
-   
-   Group getRelatedGroup();
-   
-   UserQuery setRole(Role role);
-   
-   UserQuery setRole(String name);
-   
-   Role getRole();
-   
-   UserQuery setAttributeFilter(String name, String[] values);
-   
-   UserQuery sort(boolean ascending);
+   public Range next()
+   {
+      offset += limit;
+      return this;
+   }
 
 }

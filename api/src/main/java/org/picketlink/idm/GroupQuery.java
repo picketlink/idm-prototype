@@ -26,6 +26,43 @@ package org.picketlink.idm;
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface GroupQuery
+public interface GroupQuery extends Query
 {
+   //TODO: Javadocs
+   //TODO: Exceptions
+
+   GroupQuery reset();
+   
+   GroupQuery immutable();
+   
+   GroupQuery setName(String name);
+   
+   String getName();
+   
+   GroupQuery setId(String id);
+   
+   String getId();
+   
+   GroupQuery setParentGroup(Group group);
+   
+   GroupQuery setParentGroup(String group);
+   
+   Group getParentGroup();
+   
+   GroupQuery setRole(Role role);
+   
+   GroupQuery setRole(String role);
+   
+   Role getRole();
+   
+   GroupQuery setRelatedUser(User user);
+   
+   GroupQuery setRelatedUser(String user);
+   
+   User getRelatedUser();
+
+   GroupQuery setAttributeFilter(String name, String[] values);
+
+   GroupQuery sort(boolean ascending);
+
 }
