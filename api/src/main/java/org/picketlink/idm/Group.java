@@ -116,7 +116,10 @@ public interface Group
    Collection<User> getUsersWithRole(String role);
    
    Map<Role, Set<User>> getMemberships();
+
+   boolean hasRole(Role role, User user);
    
+   boolean hasRole(String role, String user);
    
    
    // Attributes

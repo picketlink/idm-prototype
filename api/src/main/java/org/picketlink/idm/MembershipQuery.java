@@ -26,7 +26,7 @@ package org.picketlink.idm;
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface MembershipQuery extends Query
+public interface MembershipQuery
 {
    //TODO: Javadocs
    //TODO: Exceptions
@@ -52,5 +52,9 @@ public interface MembershipQuery extends Query
    MembershipQuery setRole(String role);
    
    Role getRole();
+
+   void setRange(Range range);
+
+   Range getRange();
 
 }

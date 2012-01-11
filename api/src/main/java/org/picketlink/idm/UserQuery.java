@@ -26,7 +26,7 @@ package org.picketlink.idm;
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface UserQuery extends Query
+public interface UserQuery
 {
    //TODO: Javadocs
    //TODO: Exceptions
@@ -54,5 +54,9 @@ public interface UserQuery extends Query
    UserQuery setAttributeFilter(String name, String[] values);
    
    UserQuery sort(boolean ascending);
+
+   void setRange(Range range);
+
+   Range getRange();
 
 }

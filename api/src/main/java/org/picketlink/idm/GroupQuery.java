@@ -26,7 +26,7 @@ package org.picketlink.idm;
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface GroupQuery extends Query
+public interface GroupQuery
 {
    //TODO: Javadocs
    //TODO: Exceptions
@@ -64,5 +64,9 @@ public interface GroupQuery extends Query
    GroupQuery setAttributeFilter(String name, String[] values);
 
    GroupQuery sort(boolean ascending);
+
+   void setRange(Range range);
+
+   Range getRange();
 
 }

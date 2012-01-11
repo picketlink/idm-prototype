@@ -61,6 +61,14 @@ public interface User
    Collection<Role> getRoles(String groupId);
    
    Map<Role, Set<Group>> getMemberships();
+   
+   boolean hasApplicationRole(Role role);
+   
+   boolean hasApplicationRole(String role);
+   
+   boolean hasRole(Role role, Group group);
+   
+   boolean hasRole(String role, String group);
 
 
 

@@ -84,7 +84,11 @@ public interface IdentityManager
    Collection<Role> getRoles(User user, Group group);
    
    Collection<Role> getRoles(String user, String group);
-  
+   
+   boolean hasRole(Role role, User user, Group group);
+   
+   boolean hasRole(String role, String user, String group);
+
 
    // Queries
 
