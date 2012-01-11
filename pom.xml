@@ -66,23 +66,15 @@
       <id>repository.jboss.org</id>
       <name>JBoss Repository</name>
       <layout>default</layout>
-      <url>http://repository.jboss.org/maven2</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-
-    <repository>
-      <id>snapshots.jboss.org</id>
-      <name>JBoss Snapshots Repository</name>
-      <layout>default</layout>
-      <url>http://snapshots.jboss.org/maven2</url>
+      <url>https://repository.jboss.org/nexus/content/group/public-jboss</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
       <snapshots>
         <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
       </snapshots>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
     </repository>
   </repositories>
 
