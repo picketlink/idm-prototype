@@ -19,26 +19,54 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.picketlink.idm;
+package org.picketlink.idm.api;
 
 /**
- * Membership links User, Group and Role
+ * GroupQuery
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface Membership
+public interface GroupQuery
 {
-   //TODO: could be a way to have easy explicit object with getUser, getRole, getGroup instead of methods like
-   //TODO: Map<Role, Set<User>> getMemberships().
-   //TODO: Therefore mostly helper object for convenient searches and not exposing any more fancy operations
-   //TODO: To be decided
-
    //TODO: Javadocs
    //TODO: Exceptions
 
-   User getUser();
+   GroupQuery reset();
    
-   Group getGroup();
+   GroupQuery immutable();
+   
+   GroupQuery setName(String name);
+   
+   String getName();
+   
+   GroupQuery setId(String id);
+   
+   String getId();
+   
+   GroupQuery setParentGroup(Group group);
+   
+   GroupQuery setParentGroup(String group);
+   
+   Group getParentGroup();
+   
+   GroupQuery setRole(Role role);
+   
+   GroupQuery setRole(String role);
    
    Role getRole();
+   
+   GroupQuery setRelatedUser(User user);
+   
+   GroupQuery setRelatedUser(String user);
+   
+   User getRelatedUser();
+
+   GroupQuery setAttributeFilter(String name, String[] values);
+
+   GroupQuery sort(boolean ascending);
+
+   void setRange(Range range);
+
+   Range getRange();
+
 }

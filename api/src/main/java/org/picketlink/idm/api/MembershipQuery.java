@@ -19,41 +19,39 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.picketlink.idm;
+package org.picketlink.idm.api;
 
 /**
- * Template
+ * MembershipQuery
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface RoleQuery
+public interface MembershipQuery
 {
    //TODO: Javadocs
    //TODO: Exceptions
 
-   RoleQuery reset();
+   MembershipQuery reset();
    
-   RoleQuery getImmutable();
+   MembershipQuery immutable();
    
-   RoleQuery setName(String name);
+   MembershipQuery setUser(User user);
+   
+   MembershipQuery setUser(String user);
 
-   String getName();
-   
-   RoleQuery setUser(User user);
-   
-   RoleQuery setUser(String user);
-   
    User getUser();
    
-   RoleQuery setGroup(Group group);
+   MembershipQuery setGroup(Group group);
    
-   RoleQuery setGroup(String group);
+   MembershipQuery setGroup(String group);
    
    Group getGroup();
-
-   RoleQuery setAttributeFilter(String name, String[] values);
    
-   RoleQuery sort(boolean ascending);
+   MembershipQuery setRole(Role role);
+   
+   MembershipQuery setRole(String role);
+   
+   Role getRole();
 
    void setRange(Range range);
 

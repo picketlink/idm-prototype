@@ -19,42 +19,44 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-
-package org.picketlink.idm;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+package org.picketlink.idm.api;
 
 /**
+ * RoleQuery
  *
+ * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public class APITest
-   extends TestCase
+public interface RoleQuery
 {
-   /**
-    * Create the test case
-    *
-    * @param testName name of the test case
-    */
-   public APITest(String testName)
-   {
-      super( testName );
-   }
+   //TODO: Javadocs
+   //TODO: Exceptions
 
-   /**
-    * @return the suite of tests being tested
-    */
-   public static Test suite()
-   {
-      return new TestSuite( APITest.class );
-   }
+   RoleQuery reset();
+   
+   RoleQuery getImmutable();
+   
+   RoleQuery setName(String name);
 
-   /**
-    * Rigourous Test :-)
-    */
-   public void testApp()
-   {
-      assertTrue( true );
-   }
+   String getName();
+   
+   RoleQuery setUser(User user);
+   
+   RoleQuery setUser(String user);
+   
+   User getUser();
+   
+   RoleQuery setGroup(Group group);
+   
+   RoleQuery setGroup(String group);
+   
+   Group getGroup();
+
+   RoleQuery setAttributeFilter(String name, String[] values);
+   
+   RoleQuery sort(boolean ascending);
+
+   void setRange(Range range);
+
+   Range getRange();
+
 }

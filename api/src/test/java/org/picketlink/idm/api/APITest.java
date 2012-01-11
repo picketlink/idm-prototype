@@ -19,40 +19,42 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.picketlink.idm;
 
-import com.sun.xml.internal.bind.v2.TODO;
+package org.picketlink.idm.api;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 /**
- * Represent range in paginated query
  *
- * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public class Range
+public class APITest
+   extends TestCase
 {
-   //TODO: Just a quick impl
-   
-   private int offset;
-   
-   private int limit = -1;
-
-   private Range() {}
-
-   private Range(int offset, int limit)
+   /**
+    * Create the test case
+    *
+    * @param testName name of the test case
+    */
+   public APITest(String testName)
    {
-      this.offset = offset;
-      this.limit = limit;
-   }
-   
-   public Range of(int offset, int limit)
-   {
-      return new Range(offset, limit);
-   }
-   
-   public Range next()
-   {
-      offset += limit;
-      return this;
+      super( testName );
    }
 
+   /**
+    * @return the suite of tests being tested
+    */
+   public static Test suite()
+   {
+      return new TestSuite( APITest.class );
+   }
+
+   /**
+    * Rigourous Test :-)
+    */
+   public void testApp()
+   {
+      assertTrue( true );
+   }
 }

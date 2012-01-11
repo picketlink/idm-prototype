@@ -19,44 +19,21 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.picketlink.idm;
+package org.picketlink.idm.api;
 
 /**
- * Template
+ * Membership links User, Group and Role.
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface UserQuery
+public interface Membership
 {
    //TODO: Javadocs
    //TODO: Exceptions
+
+   User getUser();
    
-   UserQuery reset();
-   
-   UserQuery getImmutable();
-   
-   UserQuery setName(String name);
-   
-   String getName();
-   
-   UserQuery setRelatedGroup(Group group);
-   
-   UserQuery setRelatedGroup(String group);
-   
-   Group getRelatedGroup();
-   
-   UserQuery setRole(Role role);
-   
-   UserQuery setRole(String name);
+   Group getGroup();
    
    Role getRole();
-   
-   UserQuery setAttributeFilter(String name, String[] values);
-   
-   UserQuery sort(boolean ascending);
-
-   void setRange(Range range);
-
-   Range getRange();
-
 }

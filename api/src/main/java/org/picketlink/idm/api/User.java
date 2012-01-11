@@ -19,111 +19,66 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.picketlink.idm;
+package org.picketlink.idm.api;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
 /**
- * Group representation
+ * User representation
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface Group
+public interface User
 {
    //TODO: Javadocs
    //TODO: Exceptions
-   
-   
-   // Self related
 
-   /**
-    * Groups are stored in tree hierarchy and therefore ID represents a path. ID string always
-    * begins with "/" element that represents root of the tree
-    *
-    * Example: Valid IDs are "/acme/departments/marketing", "/security/administrator" or "/administrator".
-    * Where "acme", "departments", "marketing", "security" and "administrator" are group names.
-    *
-    * @return Group Id in String representation.
-    */
-   String getId();
+   //TODO: Application role
 
-   /**
-    * @return group name
-    */
+   // Self
+
    String getName();
    
-   
-   
-   // Sub groups
-
-   /**
-    * @return parent group or null if it refers to root ("/") in a group tree.
-    */
-   Group getParentGroup();
-
-   /**
-    * Creates a new child group.
-    *
-    * @param name
-    */
-   void createChildGroup(String name);
-
-   /**
-    * Removes child group
-    *
-    * @param group
-    */
-   void removeChildGroup(Group group);
 
 
-   /**
-    * Removes child group
-    *
-    * @param name
-    */
-   void removeChildGroup(String name);
-
-   /**
-    * @return child group. Only groups that exist one level below in the tree will be returned.
-    */
-   Collection<Group> getChildGroups();
-
-
-   
    // Roles
 
+   void addApplicationRole(Role role);
+   
+   void addApplicationRole(String role);
+   
+   void addRole(Role role, Group group);
+   
+   void addRole(String role, String group);
 
-   void addRole(Role role, User user);
-   
-   void addRole(String role, String user);
-   
-   void removeRole(Role role, User user);
-   
-   void removeRole(String role, String user);
-   
-   Collection<Role> getRoles(User user);
-   
-   Collection<Role> getRoles(String user);
-   
-   Collection<User> getUsers(User user);
-   
-   Collection<User> getUsers(String user);
-   
-   Collection<User> getUsersWithRole(Role role);
-   
-   Collection<User> getUsersWithRole(String role);
-   
-   Map<Role, Set<User>> getMemberships();
 
-   boolean hasRole(Role role, User user);
+   //TODO: if we use simply getRoles() then it is not clear if it should return only application roles or any roles
+   //TODO: related to any user
+   Collection<Role> getApplicatonRoles();
    
-   boolean hasRole(String role, String user);
+   Collection<Role> getRoles(Group group);
    
+   Collection<Role> getRoles(String groupId);
    
+   Map<Role, Set<Group>> getMembershipsMap();
+
+   Collection<Membership> getMemberships();
+   
+   boolean hasApplicationRole(Role role);
+   
+   boolean hasApplicationRole(String role);
+   
+   boolean hasRole(Role role, Group group);
+   
+   boolean hasRole(String role, String group);
+
+
+
+
    // Attributes
-   
+
    /**
     * Set attribute with given name and value. Operation will overwrite any previous value.
     * Null value will remove attribute.
@@ -144,7 +99,7 @@ public interface Group
 
    /**
     * Remove attribute with given name
-    * 
+    *
     * @param name of attribute
     */
    void removeAttribute(String name);
@@ -155,7 +110,7 @@ public interface Group
     * method will return first one
     */
    String getAttribute(String name);
-   
+
    /**
     * @param name of attribute
     * @return attribute values or null if attribute with given name doesn't exist
@@ -166,5 +121,6 @@ public interface Group
     * @return map of attribute names and their values
     */
    Map<String, String[]> getAttributes();
-   
+
+
 }

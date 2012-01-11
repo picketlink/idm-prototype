@@ -19,7 +19,7 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.picketlink.idm;
+package org.picketlink.idm.api;
 
 import java.util.Collection;
 import java.util.List;
@@ -99,6 +99,9 @@ public interface IdentityManager
    RoleQuery createRoleQuery();
    
    MembershipQuery createMembershipQuery();
+
+
+   //TODO: executeQuery methods could be moved to query objects
    
    List<User> executeQuery(UserQuery query);
    

@@ -19,67 +19,29 @@
   ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.jboss</groupId>
-    <artifactId>jboss-parent</artifactId>
-    <version>8</version>
+    <groupId>org.picketlink.idm</groupId>
+    <artifactId>picketlink-idm-parent</artifactId>
+    <version>2.0.0-Alpha01-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
-  <groupId>org.picketlink.idm</groupId>
-  <artifactId>picketlink-idm-parent</artifactId>
-  <version>2.0.0-Alpha01-SNAPSHOT</version>
-  <name>PicketLink IDM Parent</name>
-  <packaging>pom</packaging>
-  <url>http://www.jboss.org/picketlink</url>
-
-  <modules>
-    <module>api</module>
-    <module>spi</module>
-  </modules>
-
-  <licenses>
-    <license>
-      <name>lgpl</name>
-      <url>http://repository.jboss.com/licenses/lgpl.txt</url>
-    </license>
-  </licenses>
-
-  <scm>
-    <connection>scm:git:git://github.com/picketlink/idm.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/picketlink/idm.git</developerConnection>
-    <url>https://github.com/picketlink/idm.git</url>
-  </scm>
-
-  <prerequisites>
-    <maven>3.0</maven>
-  </prerequisites>
+  <artifactId>picketlink-idm-spi</artifactId>
+  <name>PicketLink IDM SPI</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <repositories>
-    <repository>
-      <id>repository.jboss.org</id>
-      <name>JBoss Repository</name>
-      <layout>default</layout>
-      <url>https://repository.jboss.org/nexus/content/group/public-jboss</url>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-      </snapshots>
-    </repository>
-  </repositories>
-
   <dependencies>
+    <dependency>
+      <groupId>org.picketlink.idm</groupId>
+      <artifactId>picketlink-idm-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

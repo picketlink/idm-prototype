@@ -19,7 +19,7 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.picketlink.idm;
+package org.picketlink.idm.api;
 
 import java.util.Collection;
 import java.util.Map;
@@ -39,6 +39,10 @@ public interface Role
    // Self
    
    String getName();
+   
+   boolean exists(User user, Group group);
+   
+   boolean exists(String user, String group);
 
 
    // Users

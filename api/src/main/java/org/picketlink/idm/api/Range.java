@@ -19,54 +19,38 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.picketlink.idm;
+package org.picketlink.idm.api;
 
 /**
- * Template
+ * Represent range in paginated query
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface GroupQuery
+public class Range
 {
-   //TODO: Javadocs
-   //TODO: Exceptions
+   //TODO: Just a quick impl
+   
+   private int offset;
+   
+   private int limit = -1;
 
-   GroupQuery reset();
-   
-   GroupQuery immutable();
-   
-   GroupQuery setName(String name);
-   
-   String getName();
-   
-   GroupQuery setId(String id);
-   
-   String getId();
-   
-   GroupQuery setParentGroup(Group group);
-   
-   GroupQuery setParentGroup(String group);
-   
-   Group getParentGroup();
-   
-   GroupQuery setRole(Role role);
-   
-   GroupQuery setRole(String role);
-   
-   Role getRole();
-   
-   GroupQuery setRelatedUser(User user);
-   
-   GroupQuery setRelatedUser(String user);
-   
-   User getRelatedUser();
+   private Range() {}
 
-   GroupQuery setAttributeFilter(String name, String[] values);
-
-   GroupQuery sort(boolean ascending);
-
-   void setRange(Range range);
-
-   Range getRange();
+   private Range(int offset, int limit)
+   {
+      this.offset = offset;
+      this.limit = limit;
+   }
+   
+   public Range of(int offset, int limit)
+   {
+      return new Range(offset, limit);
+   }
+   
+   public Range next()
+   {
+      offset += limit;
+      return this;
+   }
 
 }
