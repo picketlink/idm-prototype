@@ -35,7 +35,17 @@ public interface User
    //TODO: Javadocs
    //TODO: Exceptions
 
-   //TODO: Application role
+   //TODO: Application role - explore and polish the concept more
+
+   //TODO: minimal set of "hard-coded" attributes that make sense:
+   //TODO: enabled/disabled
+   //TODO: expiration date
+
+   //TODO: authentication - password/token validation
+
+   //TODO: non human identity - another interface?
+
+
 
    // Self
 

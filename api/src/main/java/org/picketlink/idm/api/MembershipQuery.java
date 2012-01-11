@@ -21,6 +21,8 @@
  */
 package org.picketlink.idm.api;
 
+import java.util.List;
+
 /**
  * MembershipQuery
  *
@@ -31,9 +33,16 @@ public interface MembershipQuery
    //TODO: Javadocs
    //TODO: Exceptions
 
+   // Operations
+
    MembershipQuery reset();
    
    MembershipQuery immutable();
+
+   List<Membership> executeQuery(MembershipQuery query);
+
+
+   // Conditions
    
    MembershipQuery setUser(User user);
    

@@ -44,7 +44,11 @@ public interface IdentityStore
    //TODO: Javadocs
    //TODO: Exceptions 
    
-   //TODO: Application role - does it have explicit entity on the storage level? 
+   //TODO: Application role - does it have explicit entity on the storage level?
+
+   //TODO: authentication, password strenght, salted password hashes
+
+   //TODO: control hooks, events
    
    // User
 

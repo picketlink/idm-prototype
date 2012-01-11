@@ -21,6 +21,9 @@
  */
 package org.picketlink.idm.api;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * UserQuery
  *
@@ -30,10 +33,18 @@ public interface UserQuery
 {
    //TODO: Javadocs
    //TODO: Exceptions
-   
+
+
+   // Operations
+
    UserQuery reset();
    
    UserQuery getImmutable();
+
+   List<User> executeQuery(UserQuery query);
+
+
+   // Conditions
    
    UserQuery setName(String name);
    
@@ -52,7 +63,9 @@ public interface UserQuery
    Role getRole();
    
    UserQuery setAttributeFilter(String name, String[] values);
-   
+
+   Map<String, String[]> getAttributeFilters();
+
    UserQuery sort(boolean ascending);
 
    void setRange(Range range);

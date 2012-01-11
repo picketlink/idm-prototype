@@ -21,6 +21,9 @@
  */
 package org.picketlink.idm.api;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * GroupQuery
  *
@@ -31,9 +34,16 @@ public interface GroupQuery
    //TODO: Javadocs
    //TODO: Exceptions
 
+   // Operations
+
    GroupQuery reset();
    
    GroupQuery immutable();
+
+   List<Group> executeQuery(GroupQuery query);
+
+
+   // Conditions
    
    GroupQuery setName(String name);
    
@@ -61,7 +71,9 @@ public interface GroupQuery
    
    User getRelatedUser();
 
-   GroupQuery setAttributeFilter(String name, String[] values);
+   GroupQuery addAttributeFilter(String name, String[] values);
+   
+   Map<String, String[]> getAttributeFilters();
 
    GroupQuery sort(boolean ascending);
 

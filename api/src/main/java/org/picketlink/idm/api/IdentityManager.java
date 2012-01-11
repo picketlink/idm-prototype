@@ -22,7 +22,6 @@
 package org.picketlink.idm.api;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * IdentityManager
@@ -33,6 +32,14 @@ public interface IdentityManager
 {
    //TODO: Javadocs
    //TODO: Exceptions
+
+   //TODO: control hooks & events
+
+   //TODO: linking identities
+
+   //TODO: authentication
+
+   //TODO: basic permissions?
    
    
    // User
@@ -100,23 +107,4 @@ public interface IdentityManager
    
    MembershipQuery createMembershipQuery();
 
-
-   //TODO: executeQuery methods could be moved to query objects
-   
-   List<User> executeQuery(UserQuery query);
-   
-   List<User> executeQuery(UserQuery query, Range range);
-   
-   List<Group> executeQuery(GroupQuery query);
-   
-   List<Group> executeQuery(GroupQuery query, Range range);
-   
-   List<Role> executeQuery(RoleQuery query);
-   
-   List<Role> executeQuery(RoleQuery query, Range range);
-   
-   List<Membership> executeQuery(MembershipQuery query);
-   
-   List<Membership> executeQuery(MembershipQuery query, Range range);
-   
 }
