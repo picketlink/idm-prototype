@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * UserQuery
+ * UserQuery. All applied conditions will be resolved with logical AND.
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
@@ -33,6 +33,13 @@ public interface UserQuery
 {
    //TODO: Javadocs
    //TODO: Exceptions
+
+   //TODO: add searchBy stuff that makes sense: email, first/last/full name, organization?
+
+   //TODO: make clear comment in javadoc about usage of wildcards -
+   //TODO: should support at least usage of '*' for all built in attributes mentioned above.
+
+   //TODO: Application hooks
 
 
    // Operations
@@ -52,9 +59,15 @@ public interface UserQuery
    
    UserQuery setRelatedGroup(Group group);
    
-   UserQuery setRelatedGroup(String group);
+   UserQuery setRelatedGroup(String groupId);
    
    Group getRelatedGroup();
+   
+   UserQuery setRelatedApplication(Application application);
+   
+   UserQuery setRelatedApplication(String applicationId);
+   
+   Application getRelatedApplication();
    
    UserQuery setRole(Role role);
    
@@ -66,6 +79,27 @@ public interface UserQuery
 
    Map<String, String[]> getAttributeFilters();
 
+   // Built in attributes
+   
+   UserQuery setFirstName(String firstName);
+   
+   String getFirstName();
+   
+   UserQuery setLastName(String lastName);
+   
+   String getLastName();
+   
+   UserQuery setEmail(String email);
+   
+   String getEmail();
+   
+   UserQuery setEnabled(boolean enabled);
+
+   boolean getEnabled();
+
+
+   // Pagination
+   
    UserQuery sort(boolean ascending);
 
    void setRange(Range range);

@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * RoleQuery
+ * RoleQuery. All applied conditions will be resolved with logical AND.
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
@@ -33,6 +33,8 @@ public interface RoleQuery
 {
    //TODO: Javadocs
    //TODO: Exceptions
+
+   //TODO: Application hooks
 
 
    // Operations
@@ -58,7 +60,7 @@ public interface RoleQuery
    
    RoleQuery setGroup(Group group);
    
-   RoleQuery setGroup(String group);
+   RoleQuery setGroup(String groupId);
    
    Group getGroup();
 

@@ -31,7 +31,9 @@ import java.util.Collection;
 public interface IdentityManager
 {
    //TODO: Javadocs
+
    //TODO: Exceptions
+   //TODO: Exception hierarchy from generic IdentityException vs one interface + error codes. Probably both.
 
    //TODO: control hooks & events
 
@@ -52,7 +54,7 @@ public interface IdentityManager
    
    User getUser(String name);
    
-   Collection<User> getUsers();
+   Collection<User> getAllUsers();
    
    
    
@@ -66,13 +68,13 @@ public interface IdentityManager
    
    void removeGroup(Group group);
    
-   void removeGroup(String group);
+   void removeGroup(String groupId);
    
-   Group getGroup(String group);
+   Group getGroup(String groupId);
    
-   Group getGroup(String group, Group parent);
+   Group getGroup(String groupId, Group parent);
    
-   Collection<Group> getGroups();
+   Collection<Group> getAllGroups();
    
    
    
@@ -86,15 +88,36 @@ public interface IdentityManager
    
    Role getRole(String name);
    
-   Collection<Role> getRoles();
+   Collection<Role> getAllRoles();
    
    Collection<Role> getRoles(User user, Group group);
    
-   Collection<Role> getRoles(String user, String group);
-   
+   Collection<Role> getRoles(String user, String groupId);
+
+   Collection<Role> getApplicationRoles(User user, Application application);
+
+   Collection<Role> getApplicationRoles(String user, String applicationId);
+
    boolean hasRole(Role role, User user, Group group);
    
-   boolean hasRole(String role, String user, String group);
+   boolean hasRole(String role, String user, String groupId);
+
+   boolean hasApplicationRole(Role role, User user, Application application);
+
+   boolean hasApplicationRole(String role, String user, String applicationId);
+
+
+   // Application
+
+   Application createApplication(String applicationId);
+
+   void removeApplication(Application application);
+
+   void removeApplication(String applicationId);
+
+   Application getApplication(String applicationId);
+
+   Collection<Application> getAllApplications();
 
 
    // Queries
@@ -102,6 +125,8 @@ public interface IdentityManager
    UserQuery createUserQuery();
    
    GroupQuery createGroupQuery();
+   
+   ApplicationQuery createApplicationQuery();
    
    RoleQuery createRoleQuery();
    

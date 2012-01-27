@@ -21,6 +21,8 @@
  */
 package org.picketlink.idm.spi;
 
+import org.picketlink.idm.api.Application;
+import org.picketlink.idm.api.ApplicationQuery;
 import org.picketlink.idm.api.Group;
 import org.picketlink.idm.api.GroupQuery;
 import org.picketlink.idm.api.Membership;
@@ -43,16 +45,20 @@ public interface IdentityStore
 {
    //TODO: Javadocs
    //TODO: Exceptions 
-   
-   //TODO: Application role - does it have explicit entity on the storage level?
+
+   //TODO: Application role - does it have explicit entity on the storage level? Yes...
+
+   //TODO: control hooks, events - should go along with CDI stuff probably
 
    //TODO: authentication, password strenght, salted password hashes
+   //TODO: rather instead of separate methods most of this should be OOTB provided services hooked into eventing system
 
-   //TODO: control hooks, events
-   
+   //TODO: linking identities
+
+
    // User
 
-   User createUser();
+   User createUser(String name);
    
    void removeUser(User user);
    
@@ -68,6 +74,15 @@ public interface IdentityStore
    Group getGroup(String name);
 
 
+   // Application
+
+   Application createApplication(String name);
+
+   void removeApplication(Application application);
+
+   Group getApplication(String applicationId);
+
+
    // Role
    
    Role createRole(String name);
@@ -75,7 +90,7 @@ public interface IdentityStore
    void removeRole(Role role);
    
    Role getRole(String role);
-   
+ 
    
    // Memberships
    
@@ -84,7 +99,15 @@ public interface IdentityStore
    void removeMembership(Role role, User user, Group group);
    
    Membership getMembership(Role role, User user, Group group);
-
+   
+   
+   // Application membership
+   
+   void createApplicationMembership(Role role, User user, Application application);
+   
+   void removeApplicationMembership(Role role, User user, Application application);
+   
+   boolean hasApplicationMembership(Role role, User user, Application application);
 
 
 
@@ -93,6 +116,8 @@ public interface IdentityStore
    List<User> executeQuery(UserQuery query, Range range);
 
    List<Group> executeQuery(GroupQuery query, Range range);
+   
+   List<Application> executeQuery(ApplicationQuery query, Range range);
 
    List<Role> executeQuery(RoleQuery query, Range range);
 
@@ -170,6 +195,40 @@ public interface IdentityStore
     * @return map of attribute names and their values
     */
    Map<String, String[]> getAttributes(Group group);
+
+   // Application
+
+   /**
+    * Set attribute with given name and values. Operation will overwrite any previous values.
+    * Null value or empty array will remove attribute.
+    *
+    * @param applicationId
+    * @param name of attribute
+    * @param values to be set
+    */
+   void setAttribute(Application applicationId, String name, String[] values);
+
+   /**
+    * Remove attribute with given name
+    *
+    * @param applicationId
+    * @param name of attribute
+    */
+   void removeAttribute(Application applicationId, String name);
+
+
+   /**
+    * @param applicationId
+    * @param name of attribute
+    * @return attribute values or null if attribute with given name doesn't exist
+    */
+   String[] getAttributeValues(Application applicationId, String name);
+
+   /**
+    * @param applicationId
+    * @return map of attribute names and their values
+    */
+   Map<String, String[]> getAttributes(Application applicationId);
    
    
    // Role

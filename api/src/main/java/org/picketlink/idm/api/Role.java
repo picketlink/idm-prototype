@@ -36,20 +36,22 @@ public interface Role
    //TODO: User related methods
    //TODO: Group related methods
 
+   //TODO: Add Application interface -> Collection<User> getUsers(Application app);
+
    // Self
    
    String getName();
    
    boolean exists(User user, Group group);
    
-   boolean exists(String user, String group);
+   boolean exists(String user, String groupId);
 
 
    // Users
 
    Collection<User> getUsers(Group group);
    
-   Collection<User> getUsers(String group);
+   Collection<User> getUsers(String groupId);
    
    //TODO: if we make it simply "getUsers()" then it is confusing if it should return users in context of 
    //TODO: application roles or simply any user that is related to this role both in context of application or any group.

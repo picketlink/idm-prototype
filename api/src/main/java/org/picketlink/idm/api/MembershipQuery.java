@@ -24,7 +24,7 @@ package org.picketlink.idm.api;
 import java.util.List;
 
 /**
- * MembershipQuery
+ * MembershipQuery. All applied conditions will be resolved with logical AND.
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
@@ -52,7 +52,7 @@ public interface MembershipQuery
    
    MembershipQuery setGroup(Group group);
    
-   MembershipQuery setGroup(String group);
+   MembershipQuery setGroup(String groupId);
    
    Group getGroup();
    

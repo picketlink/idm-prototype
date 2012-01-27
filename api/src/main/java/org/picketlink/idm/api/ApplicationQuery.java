@@ -25,57 +25,52 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * GroupQuery. All applied conditions will be resolved with logical AND.
+ * Template. All applied conditions will be resolved with logical AND.
  *
  * @author <a href="mailto:bdawidow@redhat.com">Boleslaw Dawidowicz</a>
  */
-public interface GroupQuery
+public interface ApplicationQuery
 {
+
    //TODO: Javadocs
    //TODO: Exceptions
 
    // Operations
 
-   GroupQuery reset();
-   
-   GroupQuery immutable();
+   ApplicationQuery reset();
 
-   List<Group> executeQuery(GroupQuery query);
+   ApplicationQuery immutable();
+
+   List<Application> executeQuery(ApplicationQuery query);
 
 
    // Conditions
-   
-   GroupQuery setName(String name);
-   
+
+   ApplicationQuery setName(String name);
+
    String getName();
-   
-   GroupQuery setId(String id);
-   
+
+   ApplicationQuery setId(String id);
+
    String getId();
-   
-   GroupQuery setParentGroup(Group group);
-   
-   GroupQuery setParentGroup(String groupId);
-   
-   Group getParentGroup();
-   
-   GroupQuery setRole(Role role);
-   
-   GroupQuery setRole(String role);
-   
+
+   ApplicationQuery setRole(Role role);
+
+   ApplicationQuery setRole(String role);
+
    Role getRole();
-   
-   GroupQuery setRelatedUser(User user);
-   
-   GroupQuery setRelatedUser(String user);
-   
+
+   ApplicationQuery setRelatedUser(User user);
+
+   ApplicationQuery setRelatedUser(String user);
+
    User getRelatedUser();
 
-   GroupQuery addAttributeFilter(String name, String[] values);
-   
+   ApplicationQuery addAttributeFilter(String name, String[] values);
+
    Map<String, String[]> getAttributeFilters();
 
-   GroupQuery sort(boolean ascending);
+   ApplicationQuery sort(boolean ascending);
 
    void setRange(Range range);
 
